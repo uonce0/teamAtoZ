@@ -1,17 +1,30 @@
-    /* 전체적인 배치 */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+/* 전체적인 배치 */
+
+    body{
+        font-family:'Nanum Gothic', sans-serif;
+    }
     .container {
     display: flex;
     justify-content: space-between;
     padding: 20px;
     max-width: 1200px;
     margin: auto;
+    gap: 30px;
     }
     section { 
-        padding: 10px;
+        padding: 30px;
         margin: 5px;
         border-radius: 10px;
         box-sizing: border-box;
         border: 1px solid black;
+    }
+    h3 {
+        font-size: 20px;
+        font-weight: bold;
+        /*h3 태그의 margin값 조정*/
+        margin-block-start: 0.8em;
+        margin-block-end: 0.8em;
     }
 
     /* 왼쪽 상자 화면 비율 (왼:오 = 2:2)*/
@@ -22,10 +35,28 @@
     .input { /*왼쪽 상자 내부의 input과 result를 가로로 나열하기 위한 코드 : input article*/
         flex: 1;
     }
+    .titleText{
+        width: 160px;
+        padding: 10px;
+        border: 2px solid #dedede;
+        border-radius: 3px;
+        font-size: 14px;
+    }
+    .purposeText{
+        width: 160px;
+        padding: 10px;
+        border: 2px solid #dedede;
+        border-radius: 3px;
+        font-size: 14px;
+    }
     .result { /*왼쪽 상자 내부의 input과 result를 가로로 나열하기 위한 코드 : result article*/
         flex: 1;
         margin-left: 20px;
-        padding-left: 20px;
+    }
+    .result p{
+        border: 2px solid #dedede;
+        padding: 8px;
+        color: #575757;
     }
 
     /*이미지 생성 담당하는 right section*/
@@ -33,24 +64,21 @@
         flex: 2;
         position: relative;  /*image div를 right section 아래쪽에 배치하기 위한 코드*/
     }
-    h3 { /*h3 태그의 margin값 조정*/
-        margin-block-start: 0.5em;
-        margin-block-end: 0.5em;
-    }
+
     .button { /*버튼 디자인*/
         display: inline-block;
-        background-color: #d8a9d3;
+        background-color: #007BFF;
         margin-left: 10px;
         margin-bottom: 10px;
         padding: 9px;
         text-align: center;
         color: white;
         border: none;
-        border-radius: 5px;
+        border-radius: 3px;
         text-decoration: none;
     }
     .button:hover { /*버튼 hover시 색 변화*/
-        background-color: #c489b3;
+        background-color: #0058b7;
     }
 
     /* left section - input*/
@@ -75,7 +103,7 @@
     }
     .result p { /*문자 출력창 구현 전 css 스타일링을 위해 임시적으로 입힘*/
         background-color: rgb(236, 236, 236);
-        border-radius: 5px;
+        border-radius: 3px;
         height: 70%;
         margin-right: 5px;
     }
@@ -113,6 +141,7 @@
         border: 1px solid #ccc;
         padding: 1px;
         width: 500px;
+        border-radius: 3px;
     }
     .key { /*키워드 태그 디자인*/
         background-color: #e0e0e0;
