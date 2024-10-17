@@ -1,7 +1,5 @@
 package pre_capstone.teamAtoZ.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import pre_capstone.teamAtoZ.service.ImgGenerationService;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -19,9 +17,6 @@ public class GPTService {
         this.gptApiKey = gptApiKey;
     }
 
-    @Autowired
-    private ImgGenerationService imgGenerationService;
-
     public String getImagePrompt(String userCommand) {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
@@ -34,8 +29,7 @@ public class GPTService {
         HttpEntity<String> request = new HttpEntity<>(requestBody, headers);
         ResponseEntity<String> response = restTemplate.exchange(gptApiUrl, HttpMethod.POST, request, String.class);
 
-//        return extractImagePromptFromResponse(response.getBody());
-        return imgGenerationService.generateImage("eiffel tower","","");
+        return extractImagePromptFromResponse(response.getBody());
 
     }
 
