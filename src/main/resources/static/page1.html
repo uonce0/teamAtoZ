@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팀 AtoZ 웹 UI</title>
+    <!-- <link rel="stylesheet" href="page1-style.css"> -->
+    <link rel="stylesheet" href="page1-style.css">
+    <script src="page1-addKeywords.js"></script>
+    <script src="page1-sendQRnKey.js"></script>
+</head>
+<body>
+    <div class="container"> 
+        <!-- 텍스트 생성 및 결과 섹션 -->
+        <section id="left">
+            <article class="input">
+                <!-- 제목 입력창 -->
+                <div class="input-field">
+                    <label for="title"><h3>제목</h3></label>
+                    <input type="text" class="titleText" placeholder="제목을 입력해주세요"></input>
+                </div>
+                <!-- 발송 목적 및 내용 입력 창 -->
+                <div class="input-field">
+                    <label for="purpose"><h3>발송 목적 및 내용</h3></label>
+                    <textarea id="purpose" class="purposeText" rows="12"></textarea>
+                </div>
+                <a href="#" class="button">AI 텍스트 생성</a>
+            </article>
+
+            <!-- 문자 생성 결과 출력창 -->
+            <article class="result">
+                <h3>생성 결과</h3>
+                <p>생성 결과가 없습니다.</p>
+            </article>
+        </section>
+
+        <!-- 이미지 생성 섹션 -->
+        <section id="right">
+            <!-- 파일 업로드 창 -->
+            <div class="create-img">
+                <h3>파일 업로드 &ensp;
+                    <span><input type="file" name="qrFile" id="qr-file-input" accept=".png, .jpg, .jpeg"></span>
+                </h3> 
+            </div>
+            <!-- 이미지 생성 키워드 추출 및 선택 -->
+            <div class="create-img">
+                <h3>이미지 생성 키워드</h3>
+                <div class="key-container" id="key-container">
+                    <input type="text" id="key-input" placeholder="태그 입력 (최대 10개)" onkeydown="addKey(event)">
+                </div>
+            </div>
+
+            <!-- 이미지 용도 선택 -->
+            <div class="img-use">
+                <h3>이미지 용도 선택</h3>
+                <label><input type="radio" name="use" value="qrBackground">QR 코드 뒷배경</label>
+                <label><input type="radio" name="use" value="warning">안전 주의 사항</label>
+                <label><input type="radio" name="use" value="sales"> 비행 관련 상품 홍보</label>
+            </div>
+            <div class="img-button">
+                <a href="#" class="button" id="make-button" onclick="handleImageGeneration()">AI 이미지 생성</a>
+            </div>
+            <!-- 생성된 이미지 노출 -->
+            <div id="image-preview" style="margin-top: 20px;">
+                <img id="generated-image" alt="생성된 이미지" style="max-width: 100%; display: none;">
+            </div>
+        </section>
+    </div>    
+</body>
+</html>
