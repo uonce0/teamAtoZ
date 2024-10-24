@@ -17,12 +17,13 @@ function addKey(event) {
         // 태그 추가
         keyContainer.insertBefore(newKey, event.target); // 생성된 태그를 입력필드 앞에 추가
         console.log(keyWords); // 배열 상태 출력
+        event.target.value = ""; // 입력창 초기화
     } else if (keyWords.length >= 10) {
         alert("최대 10개까지 입력 가능합니다."); // 최대개수 10개까지
     } else if (keyWords.includes(keyValue)) {
         alert("이미 추가된 키워드입니다.");
     }
-    event.target.value = ""; // 입력창 초기화
+
 }
 
 function removeKey(button) {
