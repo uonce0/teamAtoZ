@@ -1,10 +1,15 @@
 package pre_capstone.teamAtoZ.config;
 
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
+
 import pre_capstone.teamAtoZ.service.*;
 import com.theokanning.openai.service.OpenAiService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.time.Duration;
 
 
 @Configuration
@@ -28,7 +33,13 @@ public class AppConfig {
 
     @Bean
     public OpenAiService openAiService() {
-        return new OpenAiService(gptApiKey);
+        return new OpenAiService(gptApiKey, Duration.ofSeconds(30));
+    }
+
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
 //    @Bean

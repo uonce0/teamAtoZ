@@ -12,13 +12,15 @@ import org.springframework.web.multipart.MultipartFile;
 public class GPTService {
     private final String gptApiKey;
     private final String gptApiUrl = "https://api.openai.com/v1/chat/completions";
+    private final RestTemplate restTemplate = new RestTemplate();
+
 
     public GPTService(String gptApiKey) {
         this.gptApiKey = gptApiKey;
     }
 
     public String getImagePrompt(String userCommand) {
-        RestTemplate restTemplate = new RestTemplate();
+
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + gptApiKey);
         headers.set("Content-Type", "application/json");
