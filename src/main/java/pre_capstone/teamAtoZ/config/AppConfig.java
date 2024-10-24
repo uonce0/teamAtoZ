@@ -1,6 +1,5 @@
 package pre_capstone.teamAtoZ.config;
 
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 import pre_capstone.teamAtoZ.service.*;
