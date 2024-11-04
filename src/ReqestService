@@ -9,6 +9,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+@Service
 public class RequestService {
     private static final Integer TIME_OUT = 5000;
     private static final String API_KEY = "{연동 개발 인증키}";
