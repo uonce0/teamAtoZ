@@ -12,10 +12,15 @@ import java.util.*;
 @Service
 public class RequestService {
     private static final Integer TIME_OUT = 5000;
+    @Value("${ppuiro.api.key")
     private static final String API_KEY = "{연동 개발 인증키}";
+    @Value("${ppurio.account}")
     private static final String PPURIO_ACCOUNT = "{뿌리오 계정}";
+    @Value("${ppurio.from.phone}")
     private static final String FROM = "{발신 번호}";
+    @Value("${ppurio.file.path:}")
     private static final String FILE_PATH = "{MMS 발송인 경우 첨부할 이미지 경로}";
+    @Value("${ppurio.uri}")
     private static final String URI = "https://message.ppurio.com";
 
     public void requestSend() {
