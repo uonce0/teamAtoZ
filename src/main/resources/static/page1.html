@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[AtoZ] 이미지 생성</title>
+
+    <link rel="stylesheet" href="loadingBar.css">
+
+    <link rel="stylesheet" href="page1-style.css">
+
+</head>
+<body>
+    <div class="container"> 
+        <!-- 이미지 생성 섹션 -->
+        <section id="right">
+            <!-- 파일 업로드 창 -->
+            <div class="create-img">
+                <h3> QR 파일 업로드 &ensp;
+                    <span><input type="file" name="qrFile" id="qr-file-input" accept=".png, .jpg, .jpeg"></span>
+                    <button id="remove-qrfile-button" onclick="removeFile()" style="display: none;">파일 삭제</button>
+                </h3>
+                <div id="qr-img-info" style="display: none;">
+                    <label>이미지 크기: &ensp;
+                        <select id="qr-img-size" style="width: 120px; height: 27px;">
+                            <option value="small">작게</option>
+                            <option value="medium">중간</option>
+                            <option value="large">크게</option>
+                        </select></label>&ensp;
+                    <label>이미지 위치: &ensp;
+                        <select id="qr-img-location" style="width: 120px; height: 27px;">
+                            <option value="top-left">왼쪽 상단</option>
+                            <option value="top-right">오른쪽 상단</option>
+                            <option value="bottom-left">왼쪽 하단</option>
+                            <option value="bottom-right">오른쪽 하단</option>
+                            <option value="center">중앙</option>
+                        </select></label>
+                </div>
+            </div>
+            <!-- 이미지 생성 키워드 추출 및 선택 -->
+            <div class="create-img">
+                <h3>이미지 생성 키워드</h3>
+                <div class="key-container" id="key-container">
+                    <input type="text" id="key-input" placeholder="태그 입력 (최대 10개)" onkeydown="addKey(event)">
+                </div>
+            </div>
+            <!-- 프롬프트 생성/이미지 생성 버튼 분리 -->
+            <div class="img-button">
+                <button class="button" id="make-prompt" onclick="handlePromptGeneration()">프롬프트 생성</button>
+                <button class="button" id="make-button" onclick="handleImageGeneration()">AI 이미지 생성</button>
+            </div>
+            <div id="prompt-preview">
+                <p id="generated-prompt" style="display: none;"></p>
+            </div>
+            <!-- 생성된 이미지 노출 -->
+            <div id="image-preview">
+                <img id="generated-image" src="" alt="생성된 이미지" style="width: 400px; height: 400px; display: none;">
+                <div class="spinner" id="spinner">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+            </div>
+            <!--합성 버튼과 선택 버튼 영역-->
+            <div id="container-btn">
+                <!-- QR 합성 버튼 -->
+                <button class="button" id="combine-button" onclick="handleImageCombine()">QR 합성</button>
+
+                <!--이미지 선택 버튼-->
+                <button class="button" id="choose-button" onclick="">선택</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="page1-addKeywords.js"></script>
+    <script src="page1-sendQRnKey.js"></script>
+</body>
+</html>

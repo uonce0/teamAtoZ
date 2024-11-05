@@ -16,11 +16,11 @@ import java.util.List;
 @RequestMapping("/image")
 public class ImgGenerationController {
 
-    @Autowired
-    private GPTService gptService;
+	@Autowired
+	private GPTService gptService;
 
-    @Autowired
-    private ImgGenerationService imgGenerationService;
+	@Autowired
+	private ImgGenerationService imgGenerationService;
 
 	//브라우저의 POST 요청으로 키워드를 받아옴
 	@PostMapping("/prompt")
@@ -37,13 +37,13 @@ public class ImgGenerationController {
 
 		// 사용자가 입력한 명령어를 바탕으로 GPT-4에서 이미지 설명 생성
 		String generatedPrompt = gptService.getImagePrompt(formattedKeywords);
-		
+
 		return ResponseEntity.ok(generatedPrompt);
 	}
-	
+
 	@PostMapping("/generate")
 	public ResponseEntity<String> generateImage(@RequestParam(name = "generatedPrompt") String generatedPrompt) throws JsonProcessingException {
-		
+
 		// DALL·E 이미지 생성
 		String imageUrl = imgGenerationService.generateImage(generatedPrompt);
 

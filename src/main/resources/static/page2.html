@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[AtoZ] 문자전송</title>
+    <link rel="stylesheet" href="page2-style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 왼쪽 파트 (완성된 문자 결과 공간) -->
+         <section id="left">
+            <div class="resultTitle">
+                <p>(제목)</p>
+            </div>
+            <div class="resultMessage">
+                <p>(메세지 내용)</p>
+            </div>
+            <div class="resultImg">
+                <p>(적용 이미지)</p>
+            </div>
+            <div class="container-btncreateAI">
+                <input type="button" class="btn-createAI" value="AI 문자 생성"onclick="openPage1()">
+            </div>
+        </section>
+        <!-- 오른쪽 파트 (발신,수신자 입력공간) -->
+         <section id="right">
+            <div class="sender">
+                <h3>발신자</h3>
+                <input type="text" class="senderText" placeholder="발신자 번호를 입력하세요">
+            </div>
+            <h3>수신자</h3>
+            <div class="receiver">
+                <div class="addReceiver">
+                    <input type="text" class="receiverText" placeholder="수신자 번호를 입력하세요">
+                    <input type="button" class="btn-addReceiver" value="추가">
+                </div>
+                <div class="receiverList">
+                    <article>
+                        <p>(수신자 리스트)</p>
+                    </article>
+                </div>
+            </div>
+                <div class="container-btnSendMessage">
+                    <input type="button" class="btnSendMessage" value="메세지 전송">
+                </div>
+        </section>
+    </div>
+
+    <script src="page2-openPage1.js"></script>
+</body>
+</html>
