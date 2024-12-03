@@ -1,4 +1,4 @@
-function openPage1(){
+function openPage1(){ //팝업창 띄우기
     const width = 1300;
     const height = 700;
 

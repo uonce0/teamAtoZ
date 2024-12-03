@@ -1,4 +1,4 @@
-function addReceiver() { //번호 추가 버튼 or textarea에서 엔터키 입력
+function addReceiver() { //번호 추가 버튼 or textarea에서 enter키 입력
 
     let num = document.getElementById("contacts_list").value;
     const list = document.getElementById("receiver_list");

@@ -404,7 +404,7 @@ function addTextToCanvas(text, fontFamily, fontStyle) {
 	    transformer.nodes([newText]);
 	});
 
-	// 터블클릭시 텍스트 수정
+	// 더블클릭시 텍스트 수정
     newText.on('dblclick', function () {
         newText.hide();
 

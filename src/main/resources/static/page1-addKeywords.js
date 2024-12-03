@@ -24,7 +24,7 @@ function addKey(event) {
             event.target.value = ""; // 입력창 초기화
         }
     } else if (keyWords.length >= 10) {
-        alert("최대 10개까지 입력 가능합니다."); // 최대개수 10개까지
+        alert("최대 10개까지 입력 가능합니다.");
         event.target.value = ""; // 입력창 초기화
     }
 }

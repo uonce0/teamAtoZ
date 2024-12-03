@@ -8,7 +8,7 @@ function loadPage2(){
 
     content.innerHTML = `모바일 탑승권 도착\n\n[대한항공]KIMHANSUNG\n여정: 2024.11.29, KE005\n서울/인천(ICN) ->라스베이거스(LAS)`
 }
-//input창 글자수 계산
+//input 창 글자수 계산
 function updateCharCount(field){
     const inputField = document.getElementById(field);
     const charCountDisplay = document.getElementById(`${field}-charcount`);

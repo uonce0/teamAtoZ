@@ -1,4 +1,4 @@
-//프롬프트 글자수에 맞도록 height 조정
+//프롬프트 글자수에 맞게 height 조정
 function adjustPromptHeight(textarea) {
     textarea.style.height = 'auto'; // height를 초기화
     textarea.style.height = `${textarea.scrollHeight}px`;

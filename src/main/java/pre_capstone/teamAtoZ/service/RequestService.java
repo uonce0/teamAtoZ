@@ -32,7 +32,7 @@ public class RequestService {
         public Map<String, Object> requestSend(String title, String content,String filePath, List<String> phoneNumber) throws FileNotFoundException {
             FILE_PATH = filePath;
 
-            // 파일 경로 확인 코드 추가
+            // 파일 존재 여부 확인 코드 추가
             File file = new File(FILE_PATH);
             if (!file.exists() || !file.canRead()) {
                 System.out.println("파일을 찾을 수 없거나 읽을 수 없습니다.");

@@ -66,7 +66,7 @@ public class ImgGenerationService {
                 directory.mkdirs();  // 자동으로 디렉토리 생성
             }
 
-            // 고유한 파일 이름 생성
+            // 고유한 파일 이름 생성 : 현재 시간을 기준으로 생성
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
             uniqueFileName = simpleDateFormat.format(new Date()) + ".jpg";
             File compressedImageFile = new File(downloadsPath + uniqueFileName);

@@ -10,5 +10,4 @@ public class TeamAtoZApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TeamAtoZApplication.class, args);
 	}
-
 }

@@ -55,7 +55,7 @@ public class GPTService {
     public String getImagePrompt(String userCommand) throws JsonProcessingException {
         System.out.println("사용자 명령어: " + userCommand);
 
-        //프롬프트 조건
+        //프롬프트 조건 : 실제 이미지와 유사하게 나오도록.
         String promptMessage = String.format(
                 "Write a descriptive and creative Korean prompt to generate an image based on \\\"%s\\\" according to the following user command. \" +\n" +
                 "\"Use the following rules: \" +\n" +

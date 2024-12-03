@@ -17,7 +17,7 @@ import java.io.IOException;
 @Service
 public class CompressImageService {
 
-    // 이미지 압축 메소드
+    // 이미지 크기 압축 메소드
     public void compressImage(BufferedImage image, File outputFile, float quality) throws IOException {
         // 이미지 형식 확인
         String fileExtension = getFileExtension(outputFile);  // 파일 확장자
