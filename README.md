@@ -62,11 +62,10 @@ cd teamAtoZ
 ### application.properties 설정
 application.properties 파일에 다음과 같은 정보를 추가합니다:
 ```java
-spring.application.name=teamAtoZ
 openai.key=YOUR_OPENAI_API_KEY
 ppurio.api.key=YOUR_PPURIO_API_KEY
-ppurio.uri=https://message.ppurio.com
 ppurio.api.token=YOUR_PPURIO_API_TOKEN
+ppurio.api.expired=YOUR_PPURIO_TOKEN_EXPIRED
 ppurio.messageKey=YOUR_MSG_KEY
 ppurio.account=YOUR_ACCOUNT_INFO
 ppurio.from=YOUR_PHONE_NUM
