@@ -47,7 +47,7 @@
 
 | Page1   | Page2   |
 |---------|---------|
-| <img src="https://github.com/user-attachments/assets/c2bafc6c-45e5-4441-a246-9507972805eb" alt="page1" style="width: 50%"> | <img src="https://github.com/user-attachments/assets/e2f395db-7b5d-4cb0-ab09-47b951f17bd1" alt="page2" style="width: 50%"> |
+| <img src="https://github.com/user-attachments/assets/c2bafc6c-45e5-4441-a246-9507972805eb" alt="page1" style="width: 300px"> | <img src="https://github.com/user-attachments/assets/e2f395db-7b5d-4cb0-ab09-47b951f17bd1" alt="page2" style="width: 300px"> |
 
 
 AI 기반 이미지 생성 기술을 활용하여 사용자가 제공한 조건(예: 장소, 시간대, 스타일 등)을 바탕으로 이미지를 자동으로 생성하고, 이를 QR 코드와 결합하여 문자 메시지로 고객에게 전송하는 시스템입니다. <br>이 시스템은 생성된 이미지를 다양한 요구에 맞게 제공하며, QR 코드와 결합하여 효율적으로 정보 전달을 할 수 있습니다.
