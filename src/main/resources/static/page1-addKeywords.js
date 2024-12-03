@@ -39,10 +39,46 @@ function removeKey(button) {
     key.remove(); // 태그 삭제
 }
 
-
-
 //이미지 생성 버튼을 누르면 이미지 생성 & 버튼 텍스트를 '다시 생성'으로 변경 --이미지 생성 파트
 function makeImage() {
     // 버튼 텍스트 변경
     document.getElementById("make-button").textContent = "다시 생성";
+}
+
+//사용자가 프롬프트를 수정할 경우 자동으로 높이 조정
+const userInputprompt = document.getElementById("generated-prompt");
+userInputprompt.addEventListener('input',()=>{
+    userInputprompt.style.height = 'auto';
+    userInputprompt.style.height = `${userInputprompt.scrollHeight}px`; //내용에 맞게 높이 조정
+});
+
+
+//로딩바
+const loader1 = document.getElementById('spinner1');
+const loader2 = document.getElementById('spinner2');
+
+const promptButton = document.getElementById('make-prompt');
+const aiButton = document.getElementById('make-button');
+
+//왼쪽 프롬프트 생성 로딩바
+function showLoader1() {
+    loader1.style.display = 'block';
+    aiButton.disabled = true;
+}
+function hideLoader1() {
+    loader1.style.display = 'none';
+    aiButton.disabled = false;
+}
+
+
+//오른쪽 이미지 생성 로딩바
+function showLoader2() {
+    loader2.style.display = 'block';
+    promptButton.disabled = true;
+    aiButton.disabled = true;
+}
+function hideLoader2() {
+    loader2.style.display = 'none';
+    promptButton.disabled = false;
+    aiButton.disabled = false;
 }

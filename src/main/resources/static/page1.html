@@ -4,75 +4,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[AtoZ] 이미지 생성</title>
-
+    
+    <link rel="stylesheet" href="font.css">
     <link rel="stylesheet" href="loadingBar.css">
-
     <link rel="stylesheet" href="page1-style.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/konva@9.3.0/konva.min.js"></script>
 </head>
 <body>
     <div class="container"> 
         <!-- 이미지 생성 섹션 -->
+        <section id="left">
+            <div style="margin-top: 30px;">
+                <!-- 이미지 생성 키워드 추출 및 선택 -->
+                <div class="create-img">
+                    <h3>이미지 생성 키워드</h3>
+                    <div class="key-container" id="key-container">
+                        <input type="text" id="key-input" placeholder="태그 입력 (최대 10개)" onkeydown="addKey(event)">
+                    </div>
+                </div>
+                <!-- 프롬프트 생성/이미지 생성 버튼 분리 -->
+                <div class="img-button">
+                    <button class="button" id="make-prompt" onclick="handlePromptGeneration()">프롬프트 생성</button>
+                </div>
+                <div id="prompt-preview">
+                    <textarea id="generated-prompt" style="display: none;"></textarea>
+                    <div class="spinner1" id="spinner1">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
+                    </div>
+                </div>
+                    <button class="button" id="make-button" onclick="handleImageGeneration()">AI 이미지 생성</button>
+            </div>
+            </section>
         <section id="right">
-            <!-- 파일 업로드 창 -->
-            <div class="create-img">
-                <h3> QR 파일 업로드 &ensp;
-                    <span><input type="file" name="qrFile" id="qr-file-input" accept=".png, .jpg, .jpeg"></span>
-                    <button id="remove-qrfile-button" onclick="removeFile()" style="display: none;">파일 삭제</button>
-                </h3>
-                <div id="qr-img-info" style="display: none;">
-                    <label>이미지 크기: &ensp;
-                        <select id="qr-img-size" style="width: 120px; height: 27px;">
-                            <option value="small">작게</option>
-                            <option value="medium">중간</option>
-                            <option value="large">크게</option>
-                        </select></label>&ensp;
-                    <label>이미지 위치: &ensp;
-                        <select id="qr-img-location" style="width: 120px; height: 27px;">
-                            <option value="top-left">왼쪽 상단</option>
-                            <option value="top-right">오른쪽 상단</option>
-                            <option value="bottom-left">왼쪽 하단</option>
-                            <option value="bottom-right">오른쪽 하단</option>
-                            <option value="center">중앙</option>
-                        </select></label>
+            <div id="welcome-word" style="font-size: 20px; color: rgb(176, 176, 176);">이곳에 생성된 이미지가 나타납니다<br>프롬프트를 먼저 생성하세요!</div>
+            <!-- 스티커 삽입 기능 -->
+            <div id="container-sticker" style="width: 350px; margin-top: 10px; display:none; position: absolute;">
+                <div id="sticker">
+                    <input type="image" id="airplane" src="images/free-icon-black-plane.png" alt="airplane" style="cursor:pointer; width: auto; height: 70px; object-fit: cover; border: 1px solid lightgray;
+                    padding: 10px; background-color:rgb(239, 239, 239);" onclick="addSticker(this)">
+                    <input type="image" id="airplane-go" src="images/koreanAir.png" alt="airplane" style="cursor:pointer; width: 70px; height: 70px; object-fit: contain; border: 1px solid lightgray;
+                    padding: 10px; background-color:rgb(239, 239, 239);" onclick="addSticker(this)">
+                    <input type="image" id="hsu" src="images/hsu_black.png" alt="airplane" style="cursor:pointer; width: 70px; height: 70px; object-fit: contain; border: 1px solid lightgray;
+                    padding: 10px; background-color:rgb(239, 239, 239);" onclick="addSticker(this)">
                 </div>
-            </div>
-            <!-- 이미지 생성 키워드 추출 및 선택 -->
-            <div class="create-img">
-                <h3>이미지 생성 키워드</h3>
-                <div class="key-container" id="key-container">
-                    <input type="text" id="key-input" placeholder="태그 입력 (최대 10개)" onkeydown="addKey(event)">
-                </div>
-            </div>
-            <!-- 프롬프트 생성/이미지 생성 버튼 분리 -->
-            <div class="img-button">
-                <button class="button" id="make-prompt" onclick="handlePromptGeneration()">프롬프트 생성</button>
-                <button class="button" id="make-button" onclick="handleImageGeneration()">AI 이미지 생성</button>
-            </div>
-            <div id="prompt-preview">
-                <p id="generated-prompt" style="display: none;"></p>
             </div>
             <!-- 생성된 이미지 노출 -->
-            <div id="image-preview">
-                <img id="generated-image" src="" alt="생성된 이미지" style="width: 400px; height: 400px; display: none;">
-                <div class="spinner" id="spinner">
+            <div id="image-preview" style="width: 370px;">
+                <img id="generated-image" src="" alt="생성된 이미지" style="box-sizing: border-box; width: 370px; height: 370px; display: none;">
+                <!-- Konva 캔버스 -->
+                <div id="konva-container" style="width: 370px; height: 370px; margin: auto; text-align: center;"></div>
+                <div class="spinner2" id="spinner2">
                     <div class="bounce1"></div>
                     <div class="bounce2"></div>
                     <div class="bounce3"></div>
                 </div>
             </div>
+            <div class="space" id="container-stickerColor" style="position: absolute; bottom: 70px; display: none;">
+                <label for="stickerColor" >스티커 색상</label>&ensp;
+                <input type="color" id="stickerColor" value="#000000">
+            </div>
+            <!-- 이미지 편집 부분-->
+            <div id="container-modifying" style="width: 350px; margin-top: 50px; display:none;">
+                <div id="container-qr" style="margin-top: 30px; margin-bottom: 30px;">
+                    <h3> QR 파일 삽입</h3>
+                    <input type="file" name="qrFile" id="qr-file-input" accept=".png, .jpg, .jpeg">
+                    <button id="remove-qrfile-button" onclick="removeFile()" style="display: none;">파일삭제</button>
+                    <div class="space">
+                        <label for="qrBgColorPicker" >QR 배경 색상</label>&ensp;
+                        <input type="color" id="qrBgColorPicker" value="#000000">
+                    </div>
+                    <div class="space" style="margin-bottom: 13px;">
+                        <label for="qrColorPicker">QR 코드 색상</label>&ensp;
+                        <input type="color" id="qrColorPicker" value="#000000">
+                    </div>
+                    <div class="space">
+                        <label><input type="checkbox" id="toggleTransparent" onclick="qrTransparent(this)"/>&ensp;배경 투명하게</label>&ensp;
+                    </div>
+                    <hr>
+                </div>
+                <div id="container-txt" style="margin-bottom: 5px;">
+                    <h3>텍스트 삽입</h3>
+                    <div>
+                        <input type="text" id="textInput" placeholder="텍스트 입력" style="height: 30px; margin-right: 3px; border: 1px solid rgb(176, 176, 176); border-radius: 5px;">
+                        <button id="addTextButton">텍스트 추가</button>
+                    </div>
+                    <div>
+                        <div class="space" style="margin-bottom: 10px;">
+                            <label for="colorPicker">텍스트 색상</label>&ensp;
+                            <input type="color" id="colorPicker" value="#000000">
+                        </div>
+                        <div class="space">
+                            <label for="font-select">폰트 선택</label>&ensp;
+                            <select id="font-select" style="width: 165px;" onchange="changeFont()">
+                                <option value="Nanum Gothic">나눔고딕</option>
+                                <option value="NanumGothic ExtraBold">나눔고딕 ExtraBold</option>
+                                <option value="Arial" selected>Arial</option>
+                                <option value="Pretendard">Pretendard</option>
+                                <option value="Kavivanar">Kavivanar</option>
+                                <option value="Black Han Sans">검은고딕</option>
+                                <option value="MaruBuri">마루 부리</option>
+                                <option value="Hahmlet">햄릿</option>
+                                <option value="Sunflower">해바라기</option>
+                                <option value="Playfair Display">Playfair Display</option>
+                                <option value="Dancing Script">Dancing Script</option>
+                            </select><br>
+                            <input type="checkbox" id="font-bold" name="style" value="bold"><label for="font-bold">
+                            Bold</label>
+                            <input type="checkbox" id="font-italic" name="style" value="italic"><label for="font-italic"> Italic</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!--합성 버튼과 선택 버튼 영역-->
-            <div id="container-btn">
-                <!-- QR 합성 버튼 -->
-                <button class="button" id="combine-button" onclick="handleImageCombine()">QR 합성</button>
-
+            <div id="container-btn" style="display:none;">
+                <!-- Canvas -->
+                <button class="button" id="canvas-button" onclick="displayGeneratedImage()" style="width: 100px;">편집</button>
+                <button class="button" id="finish-button" onclick="saveEditedImage()" style="width: 100px;">편집완료</button>
                 <!--이미지 선택 버튼-->
-                <button class="button" id="choose-button" onclick="">선택</button>
+                <button class="button" id="choose-button" onclick="handleSendImage()" style="width: 100px;">선택</button>
             </div>
         </section>
     </div>
-
     <script src="page1-addKeywords.js"></script>
-    <script src="page1-sendQRnKey.js"></script>
+    <script src="page1-imgGenerator.js"></script>
+    <script src="page1-canvas.js"></script>
 </body>
 </html>

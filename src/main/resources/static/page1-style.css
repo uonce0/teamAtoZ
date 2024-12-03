@@ -1,14 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap');
-
 /* 전체적인 배치 */
 *,
 *::before,
 *::after {
     box-sizing: border-box; /* 모든 요소의 크기를 패딩과 보더를 포함하여 계산 */
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 body {
-    font-family: 'Nanum Gothic', sans-serif;
     margin: 0;
     height: 100vh;
     display: flex;
@@ -17,36 +15,55 @@ body {
     overflow: hidden;
 }
 
+section {
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 7px;
+    margin: 5px;
+    padding: 15px;
+    overflow: hidden;
+}
+
 /* container 스타일 */
 .container {
+    width: 100%;
+    height: 630px;
     position: relative;
-    width: 600px; /* 고정 너비 */
-    height: 760px; /* 고정 높이 (컨테이너가 고정된 높이를 가지도록 설정) */
-    border: 1px solid black; /* 고정 보더 */
     border-radius: 10px;
     background-color: white;
     padding: 20px; /* 내부 여백 추가 */
     overflow: hidden; /* 스크롤바가 나타나지 않도록 설정 */
-    overflow-y: auto
+    overflow-y: auto;
+
+    display: flex; 
+    gap: 7px;
+    margin: 50px;
 }
 
 /* h3 태그 */
 h3 {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     margin: 0.8em 0;
 }
 
-/* 이미지 생성 담당하는 right section */
+#left{
+    width: 40%;
+    position: relative;
+}
+
+#right{
+    width: 80%;
+    display: flex;
+    align-content: center;
+    gap: 20px;
+}
+
+/* 이미지 생성 담당하는 왼쪽 section */
 #create-img label {
     display: inline-block;
     margin: 5px 0;
 }
 
-/* 파일 선택 input */
-#qr-file-input {
-    margin-left: 10px;
-}
 
 /* select 요소 스타일 */
 select {
@@ -57,7 +74,7 @@ select {
 
 /* 버튼 디자인 */
 .button {
-    background-color: #007BFF;
+    background-color: #0055ff;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -66,12 +83,12 @@ select {
     font-size: 14px;
     margin: 10px 5px 0 0;
     transition: background-color 0.3s;
-    width: 150px; /* 버튼의 고정 너비 설정 */
+    width: 140px; /* 버튼의 고정 너비 설정 */
 }
 
 /* 버튼 hover시 색 변화 */
 .button:hover {
-    background-color: #0058b7;
+    background-color: #2890ff;
 }
 
 /* 키워드 입력창 디자인 */
@@ -122,14 +139,38 @@ select {
     text-align: right;
 }
 
+#prompt-preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 수직 가운데 정렬 */
+    align-items: center; /* 가로 가운데 정렬 */
+    margin-top: 45px;
+
+    width: 100%;
+    height: 200px;
+}
 /* 프롬프트 미리보기 */
 #generated-prompt {
+    width: 90%; /* 좌우 여백 추가 */
+    max-height: 70%; /* 높이 제한 */
+    height: auto; /* 높이를 자동으로 설정 */
     background-color: aliceblue;
-    border: 1px solid blue;
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: 0.3px 0.3px 3px 3px lightgrey;
     border-radius: 10px;
     padding: 10px;
-    box-shadow: 0.3px 0.3px 3px 3px lightgrey;
+    resize: none;
+    overflow: hidden;
+    white-space: normal;
+    word-break: break-word;
+    font-size: 15px;
 }
+#make-button{
+    position: absolute;
+    right: 15px;
+    bottom: 40px;
+}
+
 /* 이미지 미리보기 */
 #image-preview {
     display: flex;
@@ -141,29 +182,23 @@ select {
 
 /* 생성된 이미지 스타일 */
 #generated-image {
-    max-width: 100%;
+    max-width: none;
+    min-width: auto;
 }
+
+.space{
+    margin-top: 7px;
+}
+
 
 /* 새로운 스타일 추가: 버튼 사이의 div에 flexbox 사용 */
 #container-btn {
     display: flex;
     position: absolute;
     justify-content: space-between;
-    /*bottom: 20px;*/
-    right: 20px;
+    bottom: 40px;
+    right: 40px;
     padding-bottom: 10px;
-}
-
-/* QR 합성 버튼을 이미지 생성 버튼과 같은 스타일로 오른쪽에 배치 */
-#qr-combine {
-    margin-top: 10px;
-    padding: 21px;
-}
-
-/* QR 합성 버튼 스타일 */
-#combine-button {
-    width: 100px;
-    display: none;
 }
 
 /* QR 합성 버튼 hover시 색 변화 */
@@ -171,7 +206,6 @@ select {
     background-color: #0058b7;
 }
 
-#choose-button{
-    width: 100px;
-    display: none;
+.container-modifying{
+    display: flex;
 }

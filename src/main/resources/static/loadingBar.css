@@ -1,24 +1,41 @@
-#image-preview {
-   width: 513px;
-   height: 513px;
-   margin-top: 20px;
+#right {
+  position: relative;
+}
+
+.spinner1 {
+  /*시작할 때는 로딩바 보이지 않음*/
+  position: absolute;
+  display: none;
+ }
+ .spinner1 > div {
+  width: 18px;
+  height: 18px;
+  background-color: #333;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+.spinner1 .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner1 .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
 }
 
 
-.spinner {
-  text-align: center;
 
- /*중심에 배치하기 위한 코드*/
+.spinner2 {
   position: absolute;
-  top: 60%;
-  left: 50%;
-  margin: -25px 0 0 -23px;
-
- /*시작할 때는 로딩바 보이지 않음*/
+    top: 50%;
+    left: 45%;
   display: none;
 }
 
-.spinner > div {
+.spinner2 > div {
   width: 18px;
   height: 18px;
   background-color: #333;
@@ -28,12 +45,12 @@
   animation: sk-bouncedelay 1.4s infinite ease-in-out both;
 }
 
-.spinner .bounce1 {
+.spinner2 .bounce1 {
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
 }
 
-.spinner .bounce2 {
+.spinner2 .bounce2 {
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 }
@@ -51,4 +68,11 @@
     -webkit-transform: scale(1.0);
     transform: scale(1.0);
   }
+}
+
+#welcome-word{
+    position:absolute;
+    top: 47%;
+    left: 30%;
+    text-align: center;
 }

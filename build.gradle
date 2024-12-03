@@ -1,3 +1,4 @@
+
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.4'
@@ -33,10 +34,16 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+	//qr 합성 dependency
 	implementation 'commons-codec:commons-codec:1.15'
 
+	//openAI 연결 dependency
 	implementation 'com.theokanning.openai-gpt3-java:client:0.10.0'
 	implementation 'com.theokanning.openai-gpt3-java:service:0.10.0'
+
+	//뿌리오 연결 dependency
+	implementation 'com.fasterxml.jackson.core:jackson-databind'
+	implementation 'org.apache.commons:commons-lang3:3.12.0'
 }
 
 tasks.named('test') {

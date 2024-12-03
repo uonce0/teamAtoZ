@@ -10,7 +10,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class GPTService {
@@ -23,40 +22,66 @@ public class GPTService {
     public GPTService(String gptApiKey) {
         this.gptApiKey = gptApiKey;
     }
-    
-    public String getImagePrompt(String userCommand) throws JsonProcessingException {
 
+    // GPT 호출
+    public String callGPT(String prompt) throws JsonProcessingException {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + gptApiKey);
         headers.set("Content-Type", "application/json");
 
+        // ObjectMapper로 JSON 객체 생성
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode requestBody = objectMapper.createObjectNode()
+                .put("model", "gpt-4")
+                .put("max_tokens", 200)
+                .set("messages", objectMapper.createArrayNode().add(objectMapper.createObjectNode()
+                        .put("role", "user")
+                        .put("content", prompt)));
+
+        // JSON 형식으로 직렬화하여 요청 본문으로 사용
+        String jsonRequestBody = objectMapper.writeValueAsString(requestBody);
+
+        HttpEntity<String> request = new HttpEntity<>(jsonRequestBody, headers);
+        ResponseEntity<String> response = restTemplate.exchange(gptApiUrl, HttpMethod.POST, request, String.class);
+
+        // 응답 처리
+        ObjectMapper responseMapper = new ObjectMapper();
+        JsonNode rootNode = responseMapper.readTree(response.getBody());
+        return rootNode.path("choices").get(0).path("message").path("content").asText();
+    }
+
+
+    //최초 프롬프트 생성
+    public String getImagePrompt(String userCommand) throws JsonProcessingException {
         System.out.println("사용자 명령어: " + userCommand);
-        
-        // 프롬프트 조건
+
+        //프롬프트 조건
         String promptMessage = String.format(
-                "%s. 이 키워드와 공항 코드로 특정 국가의 랜드마크와 배경을 바탕으로 계절감과 분위기가 조화된 이미지를 만들어줘. " +
-                "1. 영어 대문자 세 글자는 공항 코드야. 공항 코드나 도시명이 들어가면 그 장소의 랜드마크가 크게 가운데에 놓인 느낌으로 해줘. " +
-                "2. 계절을 암시하는 키워드가 있으면 계절감도 자연스럽게 표현해줘. " +
-                "3. 나머지 키워드는 자연스럽게 조화롭게 배치하고, 과장 없이 사실적인 느낌으로 해줘. " +
-                "생성되는 프롬프트에는 공항이나 비행기, 공항 코드가 들어가면 안 돼. " +
-                "전체 배경보다는 주요 대상이 강조되고, 무드 있는 분위기를 유지하면서도 너무 선명하지 않은 색감으로 따뜻하고 부드러운 느낌으로 부탁해. " +
-                "부연 설명 없이 프롬프트만 간단히 영어로 작성해줘.",
+                "Write a descriptive and creative Korean prompt to generate an image based on \\\"%s\\\" according to the following user command. \" +\n" +
+                "\"Use the following rules: \" +\n" +
+                "\"1. If the input contains a 3-letter airport code (e.g., DBX, LAX, ICN), infer an iconic landmark or tourist attraction of that location and set it as the primary background of the image. \" +\n" +
+                "\"2. If there are seasonal keywords (e.g., spring, summer, fall, winter), incorporate them seamlessly into the image’s theme and atmosphere, reflecting the feeling of the season. \" +\n" +
+                "\"3. If the input does not specify local specialties, souvenirs, or signature foods, focus solely on landmarks and avoid adding distinct foreground objects. \" +\n" +
+                "\"4. Exclude explicit references to airplanes, airports, or airport codes in the generated prompt. \" +\n" +
+                "\"5. Create an emotionally and artistically styled picture, using warm and soft colors to evoke a peaceful and inviting atmosphere. Avoid overly sharp or exaggerated expressions. \" +\n" +
+                "\"6. Write the final output in only one concise sentence in Korean!! Keep it simple and focused. \" +\n" +
+                "\"7. Ensure the main landmarks stand out prominently from the background while maintaining harmony with the surrounding elements.\"+\n" +
+                "\"8. Exclude words that means 'drawing' or any describing words as 'drawing', 'depicting' or 'portraying'.",
                 userCommand
         );
 
-        String requestBody = String.format(
-                "{\"model\":\"gpt-4\",\"messages\":[{\"role\":\"user\",\"content\":\"%s\"}],\"max_tokens\":150}",
-                promptMessage
-        );
+        String korContent = callGPT(promptMessage);
+        System.out.println("생성된 한국어 프롬프트: " + korContent);
+        return korContent;
+    }
 
-        HttpEntity<String> request = new HttpEntity<>(requestBody, headers);
-        ResponseEntity<String> response = restTemplate.exchange(gptApiUrl, HttpMethod.POST, request, String.class);
+    // 수정된 한국어 프롬프트를 영어로 번역
+    public String translateToEnglish(String korContent) throws JsonProcessingException {
+        String translatedPromptMessage = String.format("Translate the following prompt into natural English. Make prompt always start with 'A realistic scene'. Exclude 'illustration' or any describing words as 'drawing', 'depicting' or 'portraying'.: \"%s\"", korContent);
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode rootNode = objectMapper.readTree(response.getBody());
-        String content = rootNode.path("choices").get(0).path("message").path("content").asText();
-        System.out.println("생성된 프롬프트: " + content);
+        String EnContent = callGPT(translatedPromptMessage);
+        System.out.println("영어로 번역된 프롬프트: " + EnContent);
 
-        return content;
+        return EnContent;
     }
 }

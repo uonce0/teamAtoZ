@@ -16,9 +16,6 @@ public class AppConfig {
     @Value("${openai.key}")
     private String gptApiKey;
 
-//    @Value("${poorio.api.key}")
-//    private String poorioApiKey;
-
     @Bean
     public String gptApiKey() {
         return gptApiKey;
@@ -38,8 +35,4 @@ public class AppConfig {
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
-//    @Bean
-//    public PooRioService pooRioService() {
-//        return new PooRioService(poorioApiKey);
-//    }
 }

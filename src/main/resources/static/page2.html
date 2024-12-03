@@ -6,47 +6,78 @@
     <title>[AtoZ] 문자전송</title>
     <link rel="stylesheet" href="page2-style.css">
 </head>
-<body>
+<body onload="loadPage2()">
     <div class="container">
         <!-- 왼쪽 파트 (완성된 문자 결과 공간) -->
          <section id="left">
-            <div class="resultTitle">
-                <p>(제목)</p>
+            <div class="container-message">
+                <textarea id="title" class="box" placeholder="제목을 입력해주세요." oninput="updateCharCount('title')" maxlength="24" onpaste="handlePaste(event,'title')" onfocus="handleFocus('title')" onblur="handleBlur('title')">탑승권 안내</textarea>
+                <div class="char-count" id="title-charcount">0/30</div>
+            </div>     
+            <div class="container-message">
+                <textarea id="content" class="box" placeholder="내용을 입력해주세요." oninput="updateCharCount('content')" maxlength="199" onpaste="handlePaste(event,'content')" onfocus="handleFocus('content')" onblur="handleBlur('content')"></textarea>
+                <div class="char-count" id="content-charcount">0/200</div>
             </div>
-            <div class="resultMessage">
-                <p>(메세지 내용)</p>
-            </div>
-            <div class="resultImg">
-                <p>(적용 이미지)</p>
-            </div>
-            <div class="container-btncreateAI">
-                <input type="button" class="btn-createAI" value="AI 문자 생성"onclick="openPage1()">
+            <div id="container-image">
+                <!--<h3>이미지 추가</h3>-->
+                <img id="generated-image" src="add3.png" alt="적용된 이미지" onclick="openPage1()">
             </div>
         </section>
+        
         <!-- 오른쪽 파트 (발신,수신자 입력공간) -->
          <section id="right">
-            <div class="sender">
-                <h3>발신자</h3>
-                <input type="text" class="senderText" placeholder="발신자 번호를 입력하세요">
+            <div id="container-number">
+                <div class="section_body">
+                    <div class="section_short">
+                        <span class="short_txt">
+                            발신번호
+                        </span>
+                    </div>
+                    <div class="section_number">
+                        <div class="item01">
+                            <input type="hidden" id="sendCallerNumber" maxlength="14" value="01012345678">
+                            <p id="senderNum">010-1234-5678</p>
+                        </div>
+                    </div>    
+                </div>
+                <div class="section_body addNumber">
+                    <div class="section_short">
+                        <span class="short_txt">수신번호 입력</span>
+                    </div>
+                    <div class="contacts_box">
+                    <div class="contacts_enter">
+                        <p>직접 입력</p>
+                        <div class="item1">
+                            <textarea id="contacts_list" placeholder="휴대폰 번호 입력 후 엔터&#10;1만 건까지 붙여넣기 가능&#10;(Shift+Enter 입력 시 연속입력)" onkeyup="removeNonNumber(event)" onkeydown="addNumber(event)"></textarea>
+                        </div>
+                        <div class="item2">
+                            <button class="btn_d" onclick="addReceiver()">
+                                <span>번호추가 +</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="receiver">
+                        <div class="t_row receiver_box">
+                            <p>받는 사람</p>
+                            <button class="btn_s_a" id="removeAll" onclick="removeAll()"><span>전체 제거</span></button>
+                        </div>
+                        <div class="receiver_list" id="receiver_list">
+                            <div class="t_row default_txt" id="default_txt">
+                                <p>추가된 수신번호가 없습니다.<br>
+                                    수신번호를 추가해주세요.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section_body">
+                        <button class="sendButton" onclick="handleMessageSend()"><span>발송하기</span></button>
+                    </div>
+                </div>
             </div>
-            <h3>수신자</h3>
-            <div class="receiver">
-                <div class="addReceiver">
-                    <input type="text" class="receiverText" placeholder="수신자 번호를 입력하세요">
-                    <input type="button" class="btn-addReceiver" value="추가">
-                </div>
-                <div class="receiverList">
-                    <article>
-                        <p>(수신자 리스트)</p>
-                    </article>
-                </div>
-            </div>
-                <div class="container-btnSendMessage">
-                    <input type="button" class="btnSendMessage" value="메세지 전송">
-                </div>
         </section>
     </div>
-
     <script src="page2-openPage1.js"></script>
+    <script src="page2-leftPart.js"></script>
+    <script src="page2-send.js"></script>
 </body>
 </html>
