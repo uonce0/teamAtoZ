@@ -24,10 +24,10 @@
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
   <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
   <img src="https://img.shields.io/badge/Konva-0D83CD?style=for-the-badge&logo=konva&logoColor=white">
-- **API 연동**  
-  <img width="74" alt="ppurio" src="https://github.com/user-attachments/assets/65d4f240-21bb-4f17-8158-520490cc950a">
+- **API 연동** 
+  <img width="74" alt="ppurio" src="https://github.com/user-attachments/assets/65d4f240-21bb-4f17-8158-520490cc950a" style="border: 2px solid #D3D3D3; border-radius: 8px; display: inline-block; padding: 8px; background-color: #f3f4f6;">
   <img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=OpenAI&logoColor=white">
-- **버전 관리**  
+- **버전 관리** 
   <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
   <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
 
