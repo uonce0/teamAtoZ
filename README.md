@@ -16,16 +16,16 @@
 - **목적**: 이 프로젝트는 항공사 및 관련 기업들이 고객에게 맞춤형 정보를 효율적으로 전달할 수 있도록 설계되었습니다.<br>AI 기반 이미지 생성과 QR 코드 결합을 통해 사용자 요구에 맞는 맞춤형 콘텐츠를 생성하고, 이를 문자 메시지로 간편하게 전송함으로써 고객 경험을 향상시키고 기업의 고객 서비스 품질을 개선하는 것을 목표로 합니다.
 
 ## 기술 아키텍처
-- **프로그래밍 언어 및 프레임워크**  
+- **프로그래밍 언어 및 프레임워크** 
   <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white">
   <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
-- **기술 스택**  
+- **기술 스택** 
   <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
   <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
   <img src="https://img.shields.io/badge/Konva-0D83CD?style=for-the-badge&logo=konva&logoColor=white">
 - **API 연동**  
-purio API
+  <img width="74" alt="ppurio" src="https://github.com/user-attachments/assets/65d4f240-21bb-4f17-8158-520490cc950a">
   <img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=OpenAI&logoColor=white">
 - **버전 관리**  
   <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
@@ -43,6 +43,13 @@ purio API
 | 송지윤   | 팀원   |
 
 ## 프로젝트 소개
+## 프로젝트 페이지 소개
+
+| Page1   | Page2   |
+|---------|---------|
+| ![page1](https://github.com/user-attachments/assets/c2bafc6c-45e5-4441-a246-9507972805eb) | ![page2](https://github.com/user-attachments/assets/e2f395db-7b5d-4cb0-ab09-47b951f17bd1) |
+
+
 AI 기반 이미지 생성 기술을 활용하여 사용자가 제공한 조건(예: 장소, 시간대, 스타일 등)을 바탕으로 이미지를 자동으로 생성하고, 이를 QR 코드와 결합하여 문자 메시지로 고객에게 전송하는 시스템입니다. <br>이 시스템은 생성된 이미지를 다양한 요구에 맞게 제공하며, QR 코드와 결합하여 효율적으로 정보 전달을 할 수 있습니다.
 
 ## 주요 기능
