@@ -42,7 +42,6 @@
 | 송유원   | 팀원   |
 | 송지윤   | 팀원   |
 
-## 프로젝트 소개
 ## 프로젝트 페이지 소개
 
 | Page1   | Page2   |
@@ -71,7 +70,7 @@ cd teamAtoZ
 ./gradlew build
 ```
 
-### application.properties 설정 (필요시 추가)
+### application.properties 설정
 application.properties 파일에 다음과 같은 정보를 추가합니다:
 ```java
 spring.application.name=teamAtoZ
