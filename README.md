@@ -13,7 +13,8 @@
 
 ## 프로젝트 개요
 - **기간**: 2024.09.10 ~ 2024.12.08  
-- **목적**: 이 프로젝트는 항공사 및 관련 기업들이 고객에게 맞춤형 정보를 효율적으로 전달할 수 있도록 설계되었습니다. AI 기반 이미지 생성과 QR 코드 결합을 통해 사용자 요구에 맞는 맞춤형 콘텐츠를 생성하고, 이를 문자 메시지로 간편하게 전송함으로써 고객 경험을 향상시키고 기업의 고객 서비스 품질을 개선하는 것을 목표로 합니다.
+- **목적**: 이 프로젝트는 항공사 및 관련 기업들이 고객에게 맞춤형 정보를 효율적으로 전달할 수 있도록 설계되었습니다.
+  AI 기반 이미지 생성과 QR 코드 결합을 통해 사용자 요구에 맞는 맞춤형 콘텐츠를 생성하고, 이를 문자 메시지로 간편하게 전송함으로써 고객 경험을 향상시키고 기업의 고객 서비스 품질을 개선하는 것을 목표로 합니다.
 
 ## 기술 아키텍처
 - **프로그래밍 언어 및 프레임워크**: JAVA, SpringBoot
@@ -52,15 +53,20 @@ AI 기반 이미지 생성 기술을 활용하여 사용자가 제공한 조건(
 git clone https://github.com/uonce0/teamAtoZ.git
 cd teamAtoZ
 ./gradlew build
+```
 
-application.properties 설정
-application.properties 파일을 프로젝트 루트에 추가하고 다음과 같은 정보를 설정합니다:
+### application.properties 설정 (필요시 추가)
+application.properties 파일에 다음과 같은 정보를 추가합니다:
 ```java
 spring.application.name=teamAtoZ
 openai.key=YOUR_OPENAI_API_KEY
 ppurio.api.key=YOUR_PPURIO_API_KEY
+ppurio.uri=https://message.ppurio.com
 ppurio.api.token=YOUR_PPURIO_API_TOKEN
-ppurio.account=YOUR_ACCOUNT_INFO`
+ppurio.messageKey=YOUR_MSG_KEY
+ppurio.account=YOUR_ACCOUNT_INFO
+ppurio.from=YOUR_PHONE_NUM
+```
 
 ## 향후 계획
 - 다양한 스타일의 이미지 생성 기능 추가
