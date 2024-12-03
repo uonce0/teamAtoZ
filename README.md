@@ -13,14 +13,20 @@
 
 ## 프로젝트 개요
 - **기간**: 2024.09.10 ~ 2024.12.08  
-- **목적**: 이 프로젝트는 항공사 및 관련 기업들이 고객에게 맞춤형 정보를 효율적으로 전달할 수 있도록 설계되었습니다.
-  AI 기반 이미지 생성과 QR 코드 결합을 통해 사용자 요구에 맞는 맞춤형 콘텐츠를 생성하고, 이를 문자 메시지로 간편하게 전송함으로써 고객 경험을 향상시키고 기업의 고객 서비스 품질을 개선하는 것을 목표로 합니다.
+- **목적**: 이 프로젝트는 항공사 및 관련 기업들이 고객에게 맞춤형 정보를 효율적으로 전달할 수 있도록 설계되었습니다.<br>AI 기반 이미지 생성과 QR 코드 결합을 통해 사용자 요구에 맞는 맞춤형 콘텐츠를 생성하고, 이를 문자 메시지로 간편하게 전송함으로써 고객 경험을 향상시키고 기업의 고객 서비스 품질을 개선하는 것을 목표로 합니다.
 
 ## 기술 아키텍처
-- **프로그래밍 언어 및 프레임워크**: JAVA, SpringBoot
-- **기술 스택**: JS, HTML, CSS, Restful API, Kanvas
+- **프로그래밍 언어 및 프레임워크**:
+  <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white">
+  <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
+- **기술 스택**:
+  <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
+  <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> 
+  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">  Restful API, Kanvas
 - **API 연동**: Ppurio API, OpenAI API
-- **버전 관리**: git, github
+- **버전 관리**:
+  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+  <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
 
 ## 배포 주소
 (선택사항: 배포된 서비스 링크가 있을 경우 추가)
@@ -34,7 +40,7 @@
 | 송지윤   | 팀원   |
 
 ## 프로젝트 소개
-AI 기반 이미지 생성 기술을 활용하여 사용자가 제공한 조건(예: 장소, 시간대, 스타일 등)을 바탕으로 이미지를 자동으로 생성하고, 이를 QR 코드와 결합하여 문자 메시지로 고객에게 전송하는 시스템입니다. 이 시스템은 생성된 이미지를 다양한 요구에 맞게 제공하며, QR 코드와 결합하여 효율적으로 정보 전달을 할 수 있습니다.
+AI 기반 이미지 생성 기술을 활용하여 사용자가 제공한 조건(예: 장소, 시간대, 스타일 등)을 바탕으로 이미지를 자동으로 생성하고, 이를 QR 코드와 결합하여 문자 메시지로 고객에게 전송하는 시스템입니다. <br>이 시스템은 생성된 이미지를 다양한 요구에 맞게 제공하며, QR 코드와 결합하여 효율적으로 정보 전달을 할 수 있습니다.
 
 ## 주요 기능
 1. **AI 이미지 생성**: 사용자가 제공하는 조건(예: 장소, 시간대, 스타일 등)을 바탕으로 AI 시스템이 프롬프트와 이미지를 생성합니다. 사용자는 생성된 프롬프트와 이미지를 확인하고 수정할 수 있습니다.
