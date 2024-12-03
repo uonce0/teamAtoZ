@@ -55,7 +55,8 @@ cd teamAtoZ
 
 application.properties 설정
 application.properties 파일을 프로젝트 루트에 추가하고 다음과 같은 정보를 설정합니다:
-`spring.application.name=teamAtoZ
+```java
+spring.application.name=teamAtoZ
 openai.key=YOUR_OPENAI_API_KEY
 ppurio.api.key=YOUR_PPURIO_API_KEY
 ppurio.api.token=YOUR_PPURIO_API_TOKEN
