@@ -1,0 +1,16 @@
+/* 검은고딕 */
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
+
+/* 마루부리 */
+@import url('https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css');
+
+/* Pretendard */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
+/* Kavivanar */
+@import url('https://fonts.googleapis.com/css?family=Kavivanar');
+
+/* Dancing Script & Playfair Display */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:wght@500&display=swap');
+/* 햄릿 & Sunflower */
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@500&family=Sunflower:wght@500&display=swap');
