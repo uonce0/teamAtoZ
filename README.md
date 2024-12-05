@@ -58,11 +58,11 @@ AI 기반 이미지 생성 기술을 활용하여 사용자가 제공한 조건(
 ```bash
 git clone https://github.com/uonce0/teamAtoZ.git
 cd teamAtoZ
-./gradlew build
 ```
 
 ### application.properties 설정
-application.properties 파일에 다음과 같은 정보를 추가합니다:
+application.properties 파일에 다음과 같은 정보를 추가합니다.
+파일 경로 : teamAtoZ\src\main\resources
 ```java
 openai.key=YOUR_OPENAI_API_KEY
 ppurio.api.key=YOUR_PPURIO_API_KEY
@@ -73,6 +73,12 @@ ppurio.account=YOUR_ACCOUNT_INFO
 ppurio.from=YOUR_PHONE_NUM
 ```
 
+### 실행
+```bash
+./gradlew build
+cd build/libs
+java -jar 파일이름.jar
+```
 
 ## 향후 계획
 - 다양한 용도의 이미지 생성 기능 추가
